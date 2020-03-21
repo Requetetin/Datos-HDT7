@@ -7,6 +7,7 @@
 */
 
 import java.lang.*;
+import java.util.*;
 
 public class BinaryTree<E extends Comparable<E>> implements Tree<E>{
 
@@ -17,9 +18,10 @@ public class BinaryTree<E extends Comparable<E>> implements Tree<E>{
 			return new Node(valueOf);
 		}
 
-		if(valueOf.compareTo(current.valueOf)<1){
+		E  aux = (E)current.valueOf;
+		if(valueOf.compareTo(aux)<0){
 			current.left = addValueRecursive(current.left, valueOf);
-		}else if(valueOf.compareTo(current.valueOf)>1){
+		}else if(valueOf.compareTo(aux)>0){
 			current.right = addValueRecursive(current.right, valueOf);
 		}else{
 			return current;
@@ -41,7 +43,8 @@ public class BinaryTree<E extends Comparable<E>> implements Tree<E>{
 		if(current == current.valueOf){
 			return true;
 		}
-		if(valueOf.compareTo(current.valueOf)<1){
+		E aux = (E)current.valueOf;
+		if(valueOf.compareTo(aux)<1){
 			return containsRecursive(current.left, valueOf);
 		}
 		else{
@@ -58,12 +61,20 @@ public class BinaryTree<E extends Comparable<E>> implements Tree<E>{
 
 
 
+	ArrayList<E> back = new ArrayList<E>();
+	public ArrayList<E> inOrder(Node node){
 
-	public void inOrder(Node node){
 		if(node!= null){
 			inOrder(node.left);
-			System.out.println(" "+ node.valueOf);
+			
+			back.add((E) node.valueOf);
+			//System.out.println(" "+ node.valueOf.toString());
 			inOrder(node.right);
 		}
+		return back;
+	}
+
+	public Node getRoot(){
+		return root;
 	}
 }

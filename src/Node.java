@@ -8,7 +8,7 @@
 
 import java.lang.*;
 
-public class Node<E extends Comparable<E>>{
+public class Node<E>{
 	E valueOf;
 	Node left;
 	Node right;
@@ -18,4 +18,6 @@ public class Node<E extends Comparable<E>>{
 		right = null;
 		left = null;
 	}
+
+	
 }

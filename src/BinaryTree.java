@@ -40,11 +40,11 @@ public class BinaryTree<E extends Comparable<E>> implements Tree<E>{
 			return false;
 		}
 
-		if(current == current.valueOf){
+		if(valueOf == current.valueOf){
 			return true;
 		}
 		E aux = (E)current.valueOf;
-		if(valueOf.compareTo(aux)<1){
+		if(valueOf.compareTo(aux)<0){
 			return containsRecursive(current.left, valueOf);
 		}
 		else{
